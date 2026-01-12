@@ -15,7 +15,16 @@ export const mastra = new Mastra({
         url: process.env.DATABASE_URL || 'file:./v-inference.db',
     }),
     bundler: {
-        externals: ['bufferutil', 'utf-8-validate'], // Exclude optional ethers dependencies
+        externals: [
+            'bufferutil',
+            'utf-8-validate',
+            'ethers',
+            'onnxruntime-node',
+            '@xenova/transformers',
+            'express',
+            'cors',
+            'multer',
+        ],
     },
 });
 
