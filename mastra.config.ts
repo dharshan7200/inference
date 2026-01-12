@@ -17,6 +17,9 @@ export const mastra = new Mastra({
     logger: {
         level: (process.env.LOG_LEVEL as any) || 'info',
     },
+    bundler: {
+        externals: ['bufferutil', 'utf-8-validate'], // Exclude optional ethers dependencies
+    },
 });
 
 // Export all required components for Mastra Cloud
