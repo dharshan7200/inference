@@ -3,17 +3,11 @@
  * Required by Mastra Cloud for deployment
  */
 
-import { Mastra } from '@mastra/core/mastra';
+import { Mastra } from '@mastra/core';
 import { LibSQLStore } from '@mastra/libsql';
 
-// Import all tools
-import * as tools from './tools';
-
-// Import all workflows
-import * as workflows from './workflows';
-
-// Create Mastra instance
-export const mastra = new Mastra({
+// Create and export Mastra instance
+const mastra = new Mastra({
     storage: new LibSQLStore({
         url: process.env.DATABASE_URL || 'file:./v-inference.db',
     }),
@@ -21,13 +15,11 @@ export const mastra = new Mastra({
         level: (process.env.LOG_LEVEL as any) || 'info',
     },
     bundler: {
-        externals: ['bufferutil', 'utf-8-validate'], // Exclude optional ethers dependencies
+        externals: ['bufferutil', 'utf-8-validate'],
     },
 });
 
-// Export all components for Mastra Cloud
-export const allTools = Object.values(tools);
-export const allWorkflows = Object.values(workflows);
-export const agents = []; // No agents in this project
-
+// Export as both default and named export
+export { mastra };
 export default mastra;
+
