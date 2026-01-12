@@ -14,9 +14,6 @@ export const mastra = new Mastra({
     storage: new LibSQLStore({
         url: process.env.DATABASE_URL || 'file:./v-inference.db',
     }),
-    logger: {
-        level: (process.env.LOG_LEVEL as any) || 'info',
-    },
     bundler: {
         externals: ['bufferutil', 'utf-8-validate'], // Exclude optional ethers dependencies
     },
