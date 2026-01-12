@@ -53,6 +53,52 @@ V-Inference-Verifiable-Inference-Network--main/
 ├── .git/                           # Git repository
 ├── .gitignore                      # Git ignore rules
 ├── README.md                       # Project documentation
+├── DEPLOYMENT.md                   # Deployment guide
+│
+├── package.json                    # Backend dependencies
+├── tsconfig.json                   # TypeScript configuration
+├── mastra.config.ts                # Mastra framework configuration
+├── .env.example                    # Environment variables template
+│
+├── src/                            # Mastra Backend (TypeScript)
+│   ├── mastra/                     # Mastra components
+│   │   ├── config.ts               # Backend configuration
+│   │   ├── types.ts                # TypeScript type definitions
+│   │   │
+│   │   ├── data/                   # Data access layer (Mastra KV)
+│   │   │   ├── index.ts            # Data layer exports
+│   │   │   ├── users.ts            # User operations
+│   │   │   ├── models.ts           # Model operations
+│   │   │   ├── jobs.ts             # Inference job operations
+│   │   │   ├── marketplace.ts      # Marketplace operations
+│   │   │   └── proofs.ts           # ZK proof operations
+│   │   │
+│   │   ├── tools/                  # Mastra tools
+│   │   │   ├── index.ts            # Tools exports
+│   │   │   ├── inference-tools.ts  # ONNX, PKL, sentiment analysis
+│   │   │   ├── zkml-tools.ts       # ZK proof generation & verification
+│   │   │   ├── escrow-tools.ts     # Escrow lock/release/refund
+│   │   │   └── storage-tools.ts    # File upload/delete
+│   │   │
+│   │   ├── workflows/              # Mastra workflows (TODO)
+│   │   │   ├── model-workflows.ts  # Model upload workflow
+│   │   │   ├── inference-workflows.ts  # Inference execution
+│   │   │   └── marketplace-workflows.ts  # Purchase & usage
+│   │   │
+│   │   └── routes/                 # API routes (TODO)
+│   │       ├── users.ts            # User endpoints
+│   │       ├── models.ts           # Model endpoints
+│   │       ├── inference.ts        # Inference endpoints
+│   │       ├── marketplace.ts      # Marketplace endpoints
+│   │       └── platform.ts         # Platform stats & health
+│   │
+│   └── server.ts                   # Server entry point (TODO)
+│
+├── storage/                        # File storage
+│   └── models/                     # Uploaded model files
+│       └── [model files]           # ONNX, PyTorch, TensorFlow models
+│
+├── v-inference.db                  # LibSQL database (auto-generated)
 │
 ├── frontend/                       # Next.js 14 App
 │   ├── .gitignore                  # Frontend git ignore
@@ -99,56 +145,8 @@ V-Inference-Verifiable-Inference-Network--main/
 │           ├── api.ts              # API client
 │           └── wagmi.ts            # Web3 configuration
 │
-└── backend/                        # FastAPI Server
-    ├── main.py                     # FastAPI entry point
-    ├── requirements.txt            # Python dependencies
-    │
-    ├── add_models.py               # Script to add models
-    ├── create_compatible_models.py # Create compatible models
-    ├── create_onnx.py              # ONNX model creation
-    ├── create_onnx_model.py        # ONNX model utilities
-    ├── create_onnx_simple.py       # Simple ONNX creation
-    │
-    ├── app/                        # Application code
-    │   ├── __init__.py
-    │   │
-    │   ├── api/                    # API endpoints
-    │   │   ├── __init__.py
-    │   │   ├── models.py           # Model endpoints
-    │   │   ├── inference.py        # Inference endpoints
-    │   │   ├── marketplace.py      # Marketplace endpoints
-    │   │   └── users.py            # User endpoints
-    │   │
-    │   ├── core/                   # Core functionality
-    │   │   ├── __init__.py
-    │   │   ├── blockchain.py       # Blockchain simulation
-    │   │   ├── config.py           # Configuration
-    │   │   ├── database.py         # JSON storage
-    │   │   └── demo_data.py        # Demo data generation
-    │   │
-    │   ├── models/                 # Data models
-    │   │   ├── __init__.py
-    │   │   └── schemas.py          # Pydantic schemas
-    │   │
-    │   └── services/               # Business logic
-    │       ├── __init__.py
-    │       ├── escrow_service.py   # Escrow management
-    │       ├── ezkl_service.py     # EZKL integration
-    │       └── zkml_simulator.py   # ZKML proof simulation
-    │
-    ├── contracts/                  # Smart contracts
-    │   └── Escrow.sol              # Escrow contract (Solidity)
-    │
-    └── storage/                    # JSON file storage
-        ├── jobs.json               # Inference jobs
-        ├── listings.json           # Marketplace listings
-        ├── models.json             # Model metadata
-        ├── proofs.json             # ZK proofs
-        ├── purchases.json          # Purchase records
-        ├── users.json              # User data
-        │
-        └── models/                 # Uploaded model files
-            └── [model files]       # ONNX, PyTorch, TensorFlow models
+└── backend/                        # Legacy FastAPI (to be removed)
+    └── [Python backend files]      # Original Python implementation
 ```
 
 ## 🚀 Getting Started
