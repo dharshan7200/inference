@@ -49,35 +49,106 @@ Modern glassmorphism design with dark mode, animations, and responsive layout.
 ## 📁 Project Structure
 
 ```
-V-inference/
-├── frontend/                 # Next.js 14 App
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── page.tsx           # Landing page
-│   │   │   └── dashboard/
-│   │   │       ├── page.tsx       # Dashboard overview
-│   │   │       ├── models/        # Model management
-│   │   │       ├── inference/     # Run inference
-│   │   │       └── marketplace/   # Buy/sell inference
-│   │   └── lib/
-│   │       └── api.ts             # API client
-│   └── package.json
+V-Inference-Verifiable-Inference-Network--main/
+├── .git/                           # Git repository
+├── .gitignore                      # Git ignore rules
+├── README.md                       # Project documentation
 │
-├── backend/                  # FastAPI Server
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── models.py          # Model endpoints
-│   │   │   ├── inference.py       # Inference endpoints
-│   │   │   ├── marketplace.py     # Marketplace endpoints
-│   │   │   └── users.py           # User endpoints
-│   │   ├── core/
-│   │   │   └── database.py        # JSON storage
-│   │   └── services/
-│   │       └── zkml_simulator.py  # ZKML proof simulation
-│   ├── main.py
-│   └── requirements.txt
+├── frontend/                       # Next.js 14 App
+│   ├── .gitignore                  # Frontend git ignore
+│   ├── README.md                   # Frontend documentation
+│   ├── package.json                # Node dependencies
+│   ├── package-lock.json           # Locked dependencies
+│   ├── next.config.ts              # Next.js configuration
+│   ├── tsconfig.json               # TypeScript configuration
+│   ├── eslint.config.mjs           # ESLint configuration
+│   ├── postcss.config.mjs          # PostCSS configuration
+│   │
+│   ├── public/                     # Static assets
+│   │   ├── file.svg
+│   │   ├── globe.svg
+│   │   ├── next.svg
+│   │   ├── vercel.svg
+│   │   └── window.svg
+│   │
+│   └── src/                        # Source code
+│       ├── app/                    # Next.js App Router
+│       │   ├── favicon.ico         # Site favicon
+│       │   ├── globals.css         # Global styles
+│       │   ├── layout.tsx          # Root layout
+│       │   ├── page.tsx            # Landing page
+│       │   │
+│       │   └── dashboard/          # Dashboard routes
+│       │       ├── layout.tsx      # Dashboard layout
+│       │       ├── page.tsx        # Dashboard overview
+│       │       │
+│       │       ├── models/         # Model management
+│       │       │   └── page.tsx    # Models page
+│       │       │
+│       │       ├── inference/      # Run inference
+│       │       │   └── page.tsx    # Inference page
+│       │       │
+│       │       └── marketplace/    # Buy/sell inference
+│       │           └── page.tsx    # Marketplace page
+│       │
+│       ├── components/             # React components
+│       │   ├── ProofVerifier.tsx   # ZK proof verification UI
+│       │   └── Web3Provider.tsx    # Web3 wallet provider
+│       │
+│       └── lib/                    # Utilities
+│           ├── api.ts              # API client
+│           └── wagmi.ts            # Web3 configuration
 │
-└── README.md
+└── backend/                        # FastAPI Server
+    ├── main.py                     # FastAPI entry point
+    ├── requirements.txt            # Python dependencies
+    │
+    ├── add_models.py               # Script to add models
+    ├── create_compatible_models.py # Create compatible models
+    ├── create_onnx.py              # ONNX model creation
+    ├── create_onnx_model.py        # ONNX model utilities
+    ├── create_onnx_simple.py       # Simple ONNX creation
+    │
+    ├── app/                        # Application code
+    │   ├── __init__.py
+    │   │
+    │   ├── api/                    # API endpoints
+    │   │   ├── __init__.py
+    │   │   ├── models.py           # Model endpoints
+    │   │   ├── inference.py        # Inference endpoints
+    │   │   ├── marketplace.py      # Marketplace endpoints
+    │   │   └── users.py            # User endpoints
+    │   │
+    │   ├── core/                   # Core functionality
+    │   │   ├── __init__.py
+    │   │   ├── blockchain.py       # Blockchain simulation
+    │   │   ├── config.py           # Configuration
+    │   │   ├── database.py         # JSON storage
+    │   │   └── demo_data.py        # Demo data generation
+    │   │
+    │   ├── models/                 # Data models
+    │   │   ├── __init__.py
+    │   │   └── schemas.py          # Pydantic schemas
+    │   │
+    │   └── services/               # Business logic
+    │       ├── __init__.py
+    │       ├── escrow_service.py   # Escrow management
+    │       ├── ezkl_service.py     # EZKL integration
+    │       └── zkml_simulator.py   # ZKML proof simulation
+    │
+    ├── contracts/                  # Smart contracts
+    │   └── Escrow.sol              # Escrow contract (Solidity)
+    │
+    └── storage/                    # JSON file storage
+        ├── jobs.json               # Inference jobs
+        ├── listings.json           # Marketplace listings
+        ├── models.json             # Model metadata
+        ├── proofs.json             # ZK proofs
+        ├── purchases.json          # Purchase records
+        ├── users.json              # User data
+        │
+        └── models/                 # Uploaded model files
+            └── [model files]       # ONNX, PyTorch, TensorFlow models
 ```
 
 ## 🚀 Getting Started

@@ -1,0 +1,46 @@
+{
+  "name": "v-inference",
+  "version": "1.0.0",
+  "description": "Decentralized AI Inference Network with ZKML Verification",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest",
+    "test:tools": "vitest run src/mastra/tools",
+    "test:workflows": "vitest run src/mastra/workflows",
+    "test:api": "vitest run src/mastra/routes",
+    "migrate:data": "tsx src/scripts/migrate-data.ts"
+  },
+  "keywords": [
+    "ai",
+    "inference",
+    "zkml",
+    "blockchain",
+    "decentralized"
+  ],
+  "author": "V-Inference Team",
+  "license": "MIT",
+  "dependencies": {
+    "@mastra/core": "^0.1.0",
+    "@mastra/libsql": "^0.1.0",
+    "@hono/node-server": "^1.12.0",
+    "hono": "^4.0.0",
+    "zod": "^3.22.4",
+    "onnxruntime-node": "^1.17.0",
+    "@xenova/transformers": "^2.17.0",
+    "ethers": "^6.11.0",
+    "uuid": "^9.0.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/uuid": "^9.0.7",
+    "@types/multer": "^1.4.11",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}
